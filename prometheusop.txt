@@ -1,0 +1,3 @@
+helm repo add coreos https://s3-eu-west-1.amazonaws.com/coreos-charts/stable/
+helm install --name prometheus-operator --set rbacEnable=true --namespace monitoring coreos/prometheus-operator
+helm install coreos/kube-prometheus --name kube-prometheus --namespace monitoring

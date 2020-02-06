@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: snmp-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snmp-exporter
+  template:
+    metadata:
+    labels:
+      app: snmp-exporter
+  spec:
+    containers:
+    - image: oakman/snmp-exporter
+    command: ["/bin/snmp_exporter"]
+    args: ["--config.file=/etc/snmp_exporter/snmp.yml"]
+    name: snmp-exporter
+    ports:
+    - containerPort: 9116
+      name: metrics
+      

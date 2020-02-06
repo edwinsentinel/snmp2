@@ -1,0 +1,15 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+ name: edu-test
+ namespace: monitoring
+ labels:
+ role: alert-rules # Standard convention for organizing alert rules
+ prometheus: kube-prometheus # tie to correct Prometheus
+data:
+ test.rules.yaml: |
+ groups:
+ - name: test.rules # Top level description in Prometeheus
+ rules:
+ - alert: TestAlert
+ expr: vector(1)
